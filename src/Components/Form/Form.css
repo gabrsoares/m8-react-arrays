@@ -1,0 +1,123 @@
+form {
+    width: 80vw;
+    margin: 0 auto;
+}
+
+label, input, select, p {
+    font-size: 1.4rem;
+    background: transparent;
+}
+
+.form {
+    display: flex;
+}
+
+.form {
+    flex-direction: column;
+    border: 1px solid #000;
+    padding: 1rem;
+    margin: 5rem auto 2rem;
+    border-radius: 5px;
+    background-color: #d6d1c5;
+}
+
+input, select {
+     padding: .5rem;
+     margin: 1rem 0;
+}
+
+.loginInfo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.name {
+    width: 70%;
+}
+
+.age {
+    width: 20%;
+}
+
+.civil {
+    width: 30%;
+}
+
+.cpf {
+    width: 50%;
+}
+
+.loginInfo input, .loginInfo select {
+    width: 90%;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.radio {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.radio div input {
+    margin-right: .4rem;
+}
+
+.validation p {
+    font-size: 1.2rem;
+    color: red;
+}
+
+#cadButton {
+    align-self: center;
+    border: 1px solid #000;
+    color: #d6d1c5;
+    cursor: pointer;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    label, input, select, p {
+        font-size: 1.2rem;
+    }
+    .name {
+        width: 100%;
+    }
+
+    .age {
+        width: 27%;
+        margin-right: 1.3rem;
+    }
+
+    .civil {
+        width: 65%;
+    }
+
+    .cpf {
+        width: 80%;
+    }
+}
+
+@media (min-width: 601px) {
+    form {
+        width: 500px;
+    }
+
+    .civil {
+        width: 45%;
+    }
+
+    .cpf {
+        width: 55%;
+    }
+}
