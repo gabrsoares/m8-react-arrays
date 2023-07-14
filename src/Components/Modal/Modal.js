@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import './Modal.css'
 
-const Modal = () => {
+const Modal = (props) => {
+
+    const handleClick = () => {
+        document.getElementById('modal').style.display = 'none'
+    }
     
     return(
-        <div>
-            
+        <div id='modal'>
+            <div className="modal-body">
+                <h2>Informações</h2>
+                <p id="info-text">{props.first}:</p>
+                <p id="info-answer">{props.last}</p>
+            </div>
+            <div className="modal-button">
+                <button onClick={handleClick}>Fechar</button>
+            </div>
         </div>
     )
 }

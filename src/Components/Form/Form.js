@@ -17,7 +17,7 @@ const Form = ({onInputChange}) => {
         setIsSubmitted(true)
 
         if (firstInput !== '' && lastInput !== ''){
-            onInputChange(firstInput, lastInput)
+            onInputChange(firstInput, lastInput) //retorna a função do app.js para atualizar o estado do viewInfo
             setIsEmpty(false)
             setFirstInput('')
             setLastInput('')
@@ -29,7 +29,15 @@ const Form = ({onInputChange}) => {
     return (
         <form onSubmit={handleSubmit}>
             <div className="form" >
-                <input type="text" id='first' value={firstInput} onChange={handleInputChange}/>
+                <label htmlFor="first">Escolha o tipo de dado</label>
+                <select id='first' value={firstInput} onChange={handleInputChange}>
+                    <option value=""></option>
+                    <option value="Nome">Nome</option>
+                    <option value="Email">Email</option>
+                    <option value="CPF">CPF</option>
+                    <option value="Endereço">Endereço</option>
+                </select>
+                <label htmlFor="last">Insira a informação escolhida</label>
                 <input type="text" id='last' value={lastInput} onChange={handleInputChange}/>
             </div>
             {isSubmitted && isEmpty? <p>Preencha todos os campos!</p> : ''}

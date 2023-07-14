@@ -1,10 +1,13 @@
 import React from 'react'
 import './DataResult.css'
 
-const  DataResult = () => {
+const  DataResult = (props) => {
+
+  const htmlLength = props.children.length
+
   return (
-    <div className='results'>
-        
+    <div className='results' style={{display: htmlLength <= 0? 'none': 'block'}} >
+        {props.children}
     </div>
     
   )
