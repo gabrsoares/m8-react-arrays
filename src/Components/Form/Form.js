@@ -41,7 +41,7 @@ const Form = ({onInputChange}) => {
                 <input type="text" id='last' value={lastInput} onChange={handleInputChange}/>
             </div>
             {isSubmitted && isEmpty? <p>Preencha todos os campos!</p> : ''}
-            <button type='submit'>Enviar</button>
+            <button id='button-form' type='submit'>Enviar</button>
         </form>
     )
 }

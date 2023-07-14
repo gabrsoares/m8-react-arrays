@@ -37,8 +37,6 @@ export default function App() {
       firstModal: info.first,
       lastModal: info.last
     })
-
-    console.log(info.first, info.last)
   }
 
   return (
@@ -46,18 +44,23 @@ export default function App() {
       <Form onInputChange={handleInputChange}/>
       <DataResult>
         {newInfo.map((info, index) => (
-          <div key={index}>
+          <div style={{border: '1px solid #000', marginBottom: '10px'}} key={index}>
+            <div className="content">
+              <p className="dataInfo" style={{ display: "inline-block", marginRight: 10 }}>
+                {info.first}:
+              </p>
+              <p className="dataInfo" style={{ display: "inline-block" }}>
+                {info.last}
+              </p>
+            </div>
+            <div className="buttons">
+              <button id="button-details" onClick={() => handleOpenModal(info)}>Ver detalhes</button>
+              <button id="button-delete" onClick={() => handleDelete(index)} style={{ display: "inline-block" }}>
+                Delete
+              </button>
+            </div>
             
-            <p style={{ display: "inline-block", marginRight: 10 }}>
-              {info.first}:
-            </p>
-            <p style={{ display: "inline-block" }}>
-              {info.last}
-            </p>
-            <button onClick={() => handleDelete(index)} style={{ display: "inline-block" }}>
-              Delete
-            </button>
-            <button onClick={() => handleOpenModal(info)}>Ver detalhes</button>
+            
           </div>
         ))}
       </DataResult>

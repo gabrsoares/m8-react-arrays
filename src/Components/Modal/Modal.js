@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import './Modal.css'
 
 const Modal = (props) => {
@@ -15,7 +15,7 @@ const Modal = (props) => {
                 <p id="info-answer">{props.last}</p>
             </div>
             <div className="modal-button">
-                <button onClick={handleClick}>Fechar</button>
+                <button id="open-modal" onClick={handleClick}>Fechar</button>
             </div>
         </div>
     )
