@@ -13,6 +13,7 @@ const Modal = (props) => {
                 <h2>Informações</h2>
                 <p id="info-text">{props.first}:</p>
                 <p id="info-answer">{props.last}</p>
+                <p id="info-date">Criado em: {props.date}</p>
             </div>
             <div className="modal-button">
                 <button id="open-modal" onClick={handleClick}>Fechar</button>

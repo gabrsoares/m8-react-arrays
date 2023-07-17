@@ -6,18 +6,23 @@ import DataResult from "./Components/DataResult/DataResult";
 
 export default function App() {
   const [newInfo, setNewInfo] = useState([]);
+  const [newID, setNewID] = useState(1)
   const [viewData, setViewData] = useState(false)
   const [infoModal, setInfoModal ] = useState({
     firstModal: '',
-    lastModal: ''
+    lastModal: '',
+    dateModal: ''
   })
 
-  const handleInputChange = (firstValue, lastValue) => {
+  const handleInputChange = (firstValue, lastValue, date) => {
+    setNewID(newID + 1)
     setNewInfo([
       ...newInfo,
       {
         first: firstValue,
-        last: lastValue
+        last: lastValue,
+        dateCreated: date,
+        id: newID
       }
     ]);
     setViewData(true)
@@ -35,16 +40,42 @@ export default function App() {
 
     setInfoModal({
       firstModal: info.first,
-      lastModal: info.last
+      lastModal: info.last,
+      dateModal: info.dateCreated
     })
+  }
+
+  const getCurrentTime = () => {
+    return new Date().toLocaleTimeString()
+  }
+
+  const handleSortEarliest = () => {
+    const sortedList = newInfo.sort((a,b) => {
+      return a.id - b.id
+    })
+    setNewInfo([...sortedList])
+  }
+
+  const handleSortLatest = () => {
+    const sortedList = newInfo.sort((a,b) => {
+      return b.id - a.id
+    })
+    setNewInfo([...sortedList])
   }
 
   return (
     <div className="App">
-      <Form onInputChange={handleInputChange}/>
-      <DataResult>
+      <Form onInputChange={handleInputChange} getCurrentTime={getCurrentTime}/>
+      <DataResult sort={
+        <div className="order">
+          <p>Ordenar por:</p>
+          <div className="order-buttons">
+            <button className="sort-button" onClick={handleSortEarliest}>Antigo</button> <button className="sort-button" onClick={handleSortLatest}>Novo</button>
+          </div>
+        </div>}
+      >
         {newInfo.map((info, index) => (
-          <div style={{border: '1px solid #000', marginBottom: '10px'}} key={index}>
+          <div style={{border: '1px solid #000', marginBottom: '10px'}} key={info.id}>
             <div className="content">
               <p className="dataInfo" style={{ display: "inline-block", marginRight: 10 }}>
                 {info.first}:
@@ -64,7 +95,7 @@ export default function App() {
           </div>
         ))}
       </DataResult>
-      <Modal first={infoModal.firstModal} last={infoModal.lastModal}/>
+      <Modal first={infoModal.firstModal} last={infoModal.lastModal} date={infoModal.dateModal}/>
     </div>
   );
 }

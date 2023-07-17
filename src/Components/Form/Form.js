@@ -1,23 +1,25 @@
 import React, { useState } from 'react'
 import './Form.css'
 
-const Form = ({onInputChange}) => {
+const Form = ({onInputChange, getCurrentTime}) => {
     const [firstInput, setFirstInput] = useState('')
     const [lastInput, setLastInput] = useState('')
+    const [date, setDate] = useState('')
     const [isEmpty, setIsEmpty] = useState(true)
     const [isSubmitted, setIsSubmitted] = useState(false)
 
     const handleInputChange = (event) => {
         const {id, value} = event.target
+        const currentTime = getCurrentTime()
         id === 'first'? setFirstInput(value) : setLastInput(value)
+        setDate(currentTime)
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
         setIsSubmitted(true)
-
         if (firstInput !== '' && lastInput !== ''){
-            onInputChange(firstInput, lastInput) //retorna a função do app.js para atualizar o estado do viewInfo
+            onInputChange(firstInput, lastInput, date) //retorna a função do app.js para atualizar o estado do viewInfo
             setIsEmpty(false)
             setFirstInput('')
             setLastInput('')

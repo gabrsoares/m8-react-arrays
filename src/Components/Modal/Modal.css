@@ -6,12 +6,13 @@
     width: 90vw;
     min-height: 30vh;
     background-color: bisque;
-    top: 75%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     border: 1px solid #000;
     border-radius: 5px;
+    position: fixed;
 }
 
 #info-text, #info-answer {

@@ -7,6 +7,7 @@ const  DataResult = (props) => {
 
   return (
     <div className='results' style={{display: htmlLength <= 0? 'none': 'block'}} >
+        {props.sort}
         {props.children}
     </div>
     
